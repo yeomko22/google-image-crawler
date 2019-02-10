@@ -47,7 +47,7 @@ class GoogleSpider(scrapy.Spider):
         search_result = str(response.body)
         img_urls = self.re_imgurl.findall(search_result)
         for img_url in img_urls:
-            img_url = img_url.replace('imgurl=','')
+            img_url = img_url.replace('imgurl=', '')
             new_request = scrapy.Request(url=img_url,
                                          callback=self.parse_img)
             new_request.meta['keyword'] = keyword
@@ -74,7 +74,7 @@ class GoogleSpider(scrapy.Spider):
 
         keyword = response.meta['keyword']
         filename = '%s.jpg' % str(time.time())
-        save_path = os.path.join(self.save_root, keyword, filename)
+        save_path = os.path.join(self.save_root, keyword + '_google', filename)
 
         try:
             image.save(save_path)
