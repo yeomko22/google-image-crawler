@@ -23,7 +23,7 @@ class GoogleSpider(scrapy.Spider):
                 keyword = line.replace('\n', '')
                 self.keywords.append(keyword)
 
-                save_dir = os.path.join(self.save_root, keyword)
+                save_dir = os.path.join(self.save_root, keyword + '_google')
                 if not os.path.exists(save_dir):
                     os.mkdir(save_dir)
         print('input keyword : %s' % self.keywords)
